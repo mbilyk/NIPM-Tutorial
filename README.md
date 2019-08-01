@@ -26,11 +26,11 @@ For this example, we are going to create a very simple library. Or you can downl
 1. Under **Source Files** select the `displayDialog` and press arrow directing towards **Exported VIs**
 1. A window will pop-up called *Define VI Prototype*, but if does not, press the **Define Prototype** button. It should all be the default values below:
   - StringIn
-  ![Define VI Prototype - StringIn](/Resources/Define VI Prototype - StringIn.png)
+  ![Define VI Prototype - StringIn](/Resources/Define%20VI%20Prototype%20-%20StringIn.PNG)
   - StringOut
-  ![Define VI Prototype - StringOut](/Resources/Define VI Prototype - StringOut.png)
+  ![Define VI Prototype - StringOut](/Resources/Define%20VI%20Prototype%20-%20StringOut.PNG)
   - Len
-  ![Define VI Prototype - Len](/Resources/Define VI Prototype - Len.png)
+  ![Define VI Prototype - Len](/Resources/Define%20VI%20Prototype%20-%20len.PNG)
 1. Select **OK**
 1. Select **Build**. You should now be able to find your packed library in the builds folder
 1. In Windows Explorer, create a folder in `C:\Program Files(x86)` called `SimpleLibrary`
@@ -41,15 +41,15 @@ This will be the main application we want to distribute. It will depend on LabVI
 
 1. Create a new blank project and save it as `mainApplication.lvproj`
 1. For this example we are going to create a UI that takes in a text input, then displays it in a dialog box when we press the okay button. We will also have an exit button that stops the application. Save the vi as `main.vi`
-![main.vi front panel](/Resources/mainVI.png)
+![main.vi front panel](/Resources/mainVI.PNG)
 1. Add a **Call Library Function Node** to the VI
 1. Double-click the node and add the Library Path and Function Name
-  ![Call Library Function](/Resources/Call Library Function.png)
+  ![Call Library Function](/Resources/Call%20Library%20Function.PNG)
 1. Fill in the parameters to match the VI Prototype from the previous section
 1. Create the block diagram as shown below.
-![main.vi block diagram OK event case](/Resources/mainOKevent.png)
+![main.vi block diagram OK event case](/Resources/mainOKevent.PNG)
 1. Here is the Exit event case
-![main.vi block diagram EXIT event case](/Resources/mainExitevent.png)
+![main.vi block diagram EXIT event case](/Resources/mainEXITevent.PNG)
 1. Test the VI and save
 1. Right-Click **Build Specifications** and select **New » Application (EXE)**
 1. In the My Application Properties fill out the following information:
