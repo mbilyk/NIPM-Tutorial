@@ -47,9 +47,9 @@ This will be the main application we want to distribute. It will depend on LabVI
   ![Call Library Function](/Resources/Call%20Library%20Function.PNG)
 1. Fill in the parameters to match the VI Prototype from the previous section
 1. Create the block diagram as shown below.
-![main.vi block diagram OK event case](/Resources/mainOKevent.PNG)
+![main.vi block diagram OK event case](/Resources/mainOKevent.png)
 1. Here is the Exit event case
-![main.vi block diagram EXIT event case](/Resources/mainEXITevent.PNG)
+![main.vi block diagram EXIT event case](/Resources/mainEXITevent.png)
 1. Test the VI and save
 1. Right-Click **Build Specifications** and select **New » Application (EXE)**
 1. In the My Application Properties fill out the following information:
