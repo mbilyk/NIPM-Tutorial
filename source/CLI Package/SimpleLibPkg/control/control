@@ -1,0 +1,9 @@
+Package: simple-library
+Version: 1.0.0.0
+Section: Infrastructure
+Architecture: windows_all
+Depends: ni-labview-2019-runtime-engine-x86
+Maintainer: Michael Bilyk <33259264+mbilyk@users.noreply.github.com>
+Description: Simple Lib for NIPM Tutorial
+ A simple library for use in a NIPM Tutorial (github.com/mbilyk/NIPM-tutorial)
+XB-Plugin: file
