@@ -1,5 +1,5 @@
-This tutorial is based off this document:
-https://forums.ni.com/t5/NI-Package-Management/Introduction-to-NIPM-Packages/ta-p/3805984?profile.language=en
+<h1>Ground-up tutorial of how to create packages for use with NI Package Manager</h1>
+The purpose of this tutorial is to provide basic tutorial of how to create .nipkg files. It explores a couple of the different uses of the files including creating the packages with several methods, including multiple packages in a package, creating and using feeds, and a couple of other tricks.
 
 <h2>Create a Simple Test Application</h2>
 We want to create a simple test application. This application will consist of three main parts:
@@ -71,11 +71,12 @@ There are three main ways of creating a package
 Lets start by creating a basic package for our dll using the LabVIEW Application Builder
 
 <h3>Building a Basic Package - LabVIEW Application Builder</h3>
+
 1. Open SharedLibrary.lvproj
 1. Right-click **Build Specifications** and select **New » Package**
 1. In the properties fill out the following information:
   1. Build Specification Name: SimpleLibraryPackage
-  1. Package name: simplelibrary
+  1. Package name: simple-library
   1. Destination directory: `C:\Users\<user>\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package`
 1. In **Destinations** create a new folder under the Program Files folder called 'SimpleLibrary'
 1. Under **Source Files** select `BuildSpecification » SimpleDLL` on the left and select `Program Files\SimpleLibrary` on the right, then press the arrow pointing to the right. If you select this, you cannot add individual files from the build specification, and you have to ensure that the build specification has already been built.
@@ -84,7 +85,7 @@ Lets start by creating a basic package for our dll using the LabVIEW Application
   1. Display Name: Simple Library
   1. Package Synopsis: Simple Lib for NIPM Tutorial
   1. Section: Infrastructure (hidden)
-1. Look under Dependencies and note that *LabVIEW Runtime (32-bit)* has already been selected. This means that LabVIEW Runtime will be installed when this package is installed; if it isn't already present. You see the specific feed name in under Package name (ni-labview-2019-runtime-engine-x86) we will get to feeds later.
+1. Look under Dependencies and note that *LabVIEW Runtime (32-bit)* has already been selected. This means that LabVIEW Runtime will be installed when this package is installed; if it isn't already present. You see the specific package name under Package name (ni-labview-2019-runtime-engine-x86) we will use this later for the CLI version.
 1. Note the version in the **Version** window
 1. Under the **Feed** window we can add our package to a feed, which will let remotes fetch updates easier. We will skip this for now
 1. Select Build
@@ -105,8 +106,43 @@ We are going to build this package again using the command line interface, so we
 1. Select and remove the package
 
 <h3>Build a Basic Package - NI Package Manager Command Line Interface</h3>
-1. First, we are going to follow the directions here in the help file (http://www.ni.com/documentation/en/ni-package-manager/latest/manual/assemble-file-package/). These directions are repeated below with some more hand holding.
+
+1. First, we are going to follow the directions here in the [help file](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/assemble-file-package/). These directions are repeated below with some more hand holding.
 1. I created a directory in my NIPM Package Tutorial folder called `\CLI Package\SimpleLibPkg` to store all of the files I will use.
 1. Inside the root directory (`SimpleLibPkg`), create a folder called control.
-1. In the control subdirectory, create a control file. Name it control and delete the extension. Then open it in a text editor.
-1.
+1. Now lets create the control file using the directions from the [help](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/assemble-file-package/)  
+  1. Using a text editor, create a new document.
+  1. Enter all control file attributes and values needed for your package. You can find a description of these [here](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/control-file-attributes/). Enter the following for our purposes:
+```
+      Package: simple-library
+      Version: 1.0.0.0
+      Section: Infrastructure
+      Architecture: windows_all
+      Depends: ni-labview-2019-runtime-engine-x86
+      Maintainer: Michael Bilyk <33259264+mbilyk@users.noreply.github.com>
+      Description: Simple Lib for NIPM Tutorial
+       A simple library for use in a NIPM Tutorial (github.com/mbilyk/NIPM-tutorial)
+      XB-Plugin: file
+```
+  1. Note that the package has the same name as the LabVIEW Application Builder package properties. We also are setting the the rest of the attributes to be the same as in the LabVIEW Application Builder method. We set a dependency on ni-labview-2019-runtime-engine-x86. The maintainer is a required field, you will want to replace my name with your own and my email with yours.
+  1. Save the file as control and omit the file extension.
+1. Inside the root directory (`SimpleLibPkg`), create a folder called data. This is going to be our main location for what we want to be contained in the package.
+1. In the data folder create a folder called `Program Files_32`
+1. In `SimpleLibPkg\data\Program Files (x86)` create a folder called SimpleLibrary. Notice that this is the same directory we installed our previous package to.
+1. Place our output dll into `SimpleLibPkg\data\Program Files (x86)\SimpleLibrary`
+1. We are also going to skip creating an [instructions file](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/instructions-xml-file-packages/) for now, since we will do it when we create a package for the executable.
+1. Inside the root directory, create a Debian binary file. This file declares conformity to the Debian standard. For more information, visit [debian.org].
+  1. Using a text editor, create a new document.
+  1. Enter `2.0`
+  1. Save the file as debian-binary and omit the file extension.
+1. At this point your file directory should look like this: ![Package Directory Structure](/Resources/FileDirectory.png)
+1. Now that we have our package directory set up we can use the command line to create the package.
+1. Create a new folder in the `\CLI Package` called `Package Output`
+1. Open a command prompt.
+1. Change directories to the location of Package Manager. The default location is C:\Program Files\National Instruments\NI Package Manager. You can also add NI Package Manager to the %PATH% environment variable for your system.
+Run the following command: nipkg pack <directory containing package source files> <destination of .nipkg file>. For example:
+```
+  nipkg pack "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\SimpleLibPkg" "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\Package Output"
+```
+1. You should now have a package in the "NIPM Package Tutorial\CLI Package\Package Output" directory
+1. Run the package and ensure that it installs correctly, then remove it using the above [instructions](#uninstalling-the-package)
