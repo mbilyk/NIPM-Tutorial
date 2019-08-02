@@ -71,6 +71,7 @@ There are three main ways of creating a package
 Lets start by creating a basic package for our dll using the LabVIEW Application Builder
 
 <h3>Building a Basic Package - LabVIEW Application Builder</h3>
+
 1. Open SharedLibrary.lvproj
 1. Right-click **Build Specifications** and select **New » Package**
 1. In the properties fill out the following information:
@@ -105,6 +106,7 @@ We are going to build this package again using the command line interface, so we
 1. Select and remove the package
 
 <h3>Build a Basic Package - NI Package Manager Command Line Interface</h3>
+
 1. First, we are going to follow the directions here in the help file (http://www.ni.com/documentation/en/ni-package-manager/latest/manual/assemble-file-package/). These directions are repeated below with some more hand holding.
 1. I created a directory in my NIPM Package Tutorial folder called `\CLI Package\SimpleLibPkg` to store all of the files I will use.
 1. Inside the root directory (`SimpleLibPkg`), create a folder called control.
