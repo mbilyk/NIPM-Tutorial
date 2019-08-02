@@ -1,5 +1,5 @@
-This tutorial is based off this document:
-https://forums.ni.com/t5/NI-Package-Management/Introduction-to-NIPM-Packages/ta-p/3805984?profile.language=en
+<h1>Ground-up tutorial of how to create packages for use with NI Package Manager</h1>
+The purpose of this tutorial is to provide basic tutorial of how to create .nipkg files. It explores a couple of the different uses of the files including creating the packages with several methods, including multiple packages in a package, creating and using feeds, and a couple of other tricks.
 
 <h2>Create a Simple Test Application</h2>
 We want to create a simple test application. This application will consist of three main parts:
@@ -127,7 +127,7 @@ We are going to build this package again using the command line interface, so we
   1. Note that the package has the same name as the LabVIEW Application Builder package properties. We also are setting the the rest of the attributes to be the same as in the LabVIEW Application Builder method. We set a dependency on ni-labview-2019-runtime-engine-x86. The maintainer is a required field, you will want to replace my name with your own and my email with yours.
   1. Save the file as control and omit the file extension.
 1. Inside the root directory (`SimpleLibPkg`), create a folder called data. This is going to be our main location for what we want to be contained in the package.
-1. In the data folder create a folder called `Program Files_32)`
+1. In the data folder create a folder called `Program Files_32`
 1. In `SimpleLibPkg\data\Program Files (x86)` create a folder called SimpleLibrary. Notice that this is the same directory we installed our previous package to.
 1. Place our output dll into `SimpleLibPkg\data\Program Files (x86)\SimpleLibrary`
 1. We are also going to skip creating an [instructions file](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/instructions-xml-file-packages/) for now, since we will do it when we create a package for the executable.
@@ -145,4 +145,4 @@ Run the following command: nipkg pack <directory containing package source files
   nipkg pack "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\SimpleLibPkg" "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\Package Output"
 ```
 1. You should now have a package in the "NIPM Package Tutorial\CLI Package\Package Output" directory
-1. Run the package and ensure that it installs correctly, then remove it using the above [instructions](Uninstalling the Package)
+1. Run the package and ensure that it installs correctly, then remove it using the above [instructions](#uninstalling-the-package)
