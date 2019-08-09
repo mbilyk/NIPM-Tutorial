@@ -151,10 +151,89 @@ We are going to build this package again using the command line interface, so we
 1. Create a new folder in the `\CLI Package` called `Package Output`
 1. Open a command prompt.
 1. Change directories to the location of Package Manager. The default location is C:\Program Files\National Instruments\NI Package Manager. You can also add NI Package Manager to the %PATH% environment variable for your system.
-Run the following command: nipkg pack <directory containing package source files> <destination of .nipkg file>. For example
+1. Run the following command: nipkg pack <directory containing package source files> <destination of .nipkg file>. For example
     ```
         nipkg pack "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\SimpleLibPkg" "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\Package Output"
     ```
 1. You should now have a package in the "NIPM Package Tutorial\CLI Package\Package Output" directory
 1. Run the package and ensure that it installs correctly.
-1. Your done! Now remove it using the above [instructions](#uninstalling-the-package) so we can do this again one more time using the NI Package Builder
+1. Your done! Now remove it using the above [instructions](#uninstalling-the-package) so we can do it again. Jump to here if you want to install a package using the [command line interface](#Installing-a-package-using-the-command-line-interface).
+
+<h3>Build a Basic Package - NI Package Builder</h3>
+1. Download and install NI Package Builder from NI Package Manager.
+1. Open NI Package Builder from the start menu. I am using NI Package Builder 32-bit.
+1. Click h
+
+
+<h2>Installing a Package Using the Command Line Interface</h2>
+Generally you would want to do this for automating installation for a CI system or for IT deployment.
+
+1. Open a command prompt.
+1. Change directories to the location of Package Manager. The default location is C:\Program Files\National Instruments\NI Package Manager. You can also add NI Package Manager to the %PATH% environment variable for your system.
+1. At this point you will probably want to open the help for nipkg install. Run the command `nipkg help install`. This will give the following information (at least in NI Package Manager 19.0):
+    ```
+    C:\Program Files\National Instruments\NI Package Manager>nipkg help install
+
+    install - Installs a package
+
+    nipkg install [OPTIONS]... PACKAGES...
+
+       Install packages
+
+       PACKAGES... - A list of all the packages to install.
+                 A package can be specified by its name or by its path.
+                 If a package name is specified, that name must exist in
+                 one of the configured feeds.
+                 If a package path is specified (a path to a file with
+                 a .nipkg extension), the contents of this file are
+                 passed to the install.
+
+    OPTIONS
+       --accept-eulas
+          Confirm acceptance of license agreements.
+          Packages that require license agreements cannot be installed unless
+          this option is specified.
+       -y,--yes,--assume-yes
+          Execute the installation without user confirmation.
+       --simulate
+          Only simulate the installation.
+       --force-locked
+          Force the installation of locked packages.
+       --suppress-incompatibility-errors
+          Suppress forward incompatibility errors.
+          WARNING: Suppressing errors could leave your system in an unusable state.
+       --verbose, -v
+          Display verbose output such as detailed package information on
+          the current operation.
+       --proxy=[PROXYHOST]
+          Use the specified proxy server for requests to remote machines.
+          Specify the server using the format [protocol://]proxyhost[:port]
+          Supported protocols include socks4, socks5, and http.
+       --proxy-user=[CREDENTIALS]
+          Use the specified credentials to authenticate with the proxy server.
+          Specify the credentials using the format [user]:[password]
+       --allow-downgrade
+          Allow Package Manager to downgrade installed packages to fulfill
+          the request.
+       --allow-uninstall
+          Allow Package Manager to remove installed packages to fulfill
+          the request.
+       --install-also-upgrades
+          Allow Package Manager to upgrade installed packages to fulfill
+          an install request.
+
+
+    GLOBAL OPTIONS
+       --config=[PATH],-c=[PATH]
+      Allows the caller to specify an absolute path to a custom configuration file.
+
+    ALIASES
+       pkg-install
+       install-pkg
+    ```
+1. With this information, we know that in order to install our package we need to use the command:
+    ```
+    nipkg install --accept-eulas -y "C:\Users\<USER>\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package\simple-library_1.0.0-0_windows_all.nipkg"
+    ```
+1. And that is it, it is installed. You do more complex operations that we will cover later when we want to install multiple packages at once.
+
