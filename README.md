@@ -24,17 +24,17 @@ For this example, we are going to create a very simple library. Or you can downl
     1. Target filename: SimpleLib.dll
     1. Destination directory: `C:\Users\<user>\Documents\NIPM Package Tutorial\builds\SharedLibrary\My DLL`
 
-    ![SimpleDLL Properties](/Resources/SimpleDLL Properties.png)
+    ![SimpleDLL Properties](/Resources/SimpleDLL%20Properties.PNG)
 1. Under **Source Files** select the `displayDialog` and press arrow directing towards **Exported VIs**
 1. A window will pop-up called *Define VI Prototype*, but if does not, press the **Define Prototype** button. It should all be the default values below:
     - StringIn
-    
+
         ![Define VI Prototype - StringIn](/Resources/Define%20VI%20Prototype%20-%20StringIn.PNG)
     - StringOut
-    
+
         ![Define VI Prototype - StringOut](/Resources/Define%20VI%20Prototype%20-%20StringOut.PNG)
     - Len
-    
+
         ![Define VI Prototype - Len](/Resources/Define%20VI%20Prototype%20-%20len.PNG)
 1. Select **OK**
 1. Select **Build**. You should now be able to find your packed library in the builds folder
@@ -46,7 +46,7 @@ This will be the main application we want to distribute. It will depend on LabVI
 
 1. Create a new blank project and save it as `mainApplication.lvproj`
 1. For this example we are going to create a UI that takes in a text input, then displays it in a dialog box when we press the okay button. We will also have an exit button that stops the application. Save the vi as `main.vi`
-    
+
     ![main.vi front panel](/Resources/mainVI.PNG)
 1. Add a **Call Library Function Node** to the VI
 1. Double-click the node and add the Library Path and Function Name
@@ -164,19 +164,24 @@ We are going to build this package again using the command line interface, so we
 1. Download and install NI Package Builder from NI Package Manager.
 1. Open NI Package Builder from the start menu. I am using NI Package Builder 32-bit.
 1. Click the New Package button in the middle of the screen.
+
     ![New Package Button](/Resources/NewPackage.png)
 1. Start typing the name of your package. In this case, it is *Simple Library*. If you accidentally click off of the display name, you can right-click on the **Display name** in the *Packages* pane and select **Rename**.
 1. With the `SimpleLibrary` package selected, in the *Properties* pane click on the `Package name` field (it should say `mycompany-myproduct`) we are going to name it `simple-library`. This will name the .nipkg file that same as in our other examples. You can also fill out any other properties you would like such as the Maintainer.
+
     ![Edit Properties](/Resources/EditProperties.png)
 1. Change the **Category** to `Infrastructure (hidden)`.
 1. Next we need inputs. In the *Inputs* pane click the **New Input** button and select **Add Folder**
+
     ![Add Item Button](/Resources/AddItem.png)
 1. Select the folder that includes the built library: `NIPM Package Tutorial\builds\SharedLibrary\SimpleDLL`
 1. Drag the `SimpleDLL` folder from the *Inputs* pane into the `[Program Files (32-bit)]` directory.
-    ![Drag SimpleDLL into [Program Files (32-bit)](/Resources/DragFolder.png)
+
+    ![Drag SimpleDLL into \[Program Files (32-bit)\]](/Resources/DragFolder.png)
 1. Right-click on the `SimpleDLL` folder, select **Rename**, and rename it to `SimpleLibrary`.
 1. Save the solution. I saved it here `NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package Builder`, and called it `SimpleLibrary.pbs`. You will have to create the folder.
 1. Select **Build Solution**.
+
     ![Build Solution](/Resources/BuildSolution.png)
 1. You should now have a file called `simple-package_1.0.0.0_windows_all.nipkg` in the folder `NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package Builder\Packages`
 1. Double-click the package to install it and test it out.
@@ -253,4 +258,3 @@ Generally you would want to do this for automating installation for a CI system 
     nipkg install --accept-eulas -y "C:\Users\<USER>\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package\simple-library_1.0.0-0_windows_all.nipkg"
     ```
 1. And that is it, it is installed. You do more complex operations that we will cover later when we want to install multiple packages at once.
-
