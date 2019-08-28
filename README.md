@@ -87,7 +87,7 @@ Lets start by creating a basic package for our dll using the LabVIEW Application
     1. Build Specification Name: SimpleLibraryPackage
     1. Package name: simple-library
     1. Destination directory: `C:\Users\<user>\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package`
-1. In **Destinations** create a new folder under the Program Files folder called 'SimpleLibrary'
+1. In **Destinations** create a new folder under the Program Files folder called `SimpleLibrary`
 1. Under **Source Files** select `BuildSpecification » SimpleDLL` on the left and select `Program Files\SimpleLibrary` on the right, then press the arrow pointing to the right. If you select this, you cannot add individual files from the build specification, and you have to ensure that the build specification has already been built.
   1. Alternatively, add the `SimpleLib.dll` from `ProgramFiles(x86)\SimpleLibrary` to your project and select that from `My Computer » SimpleLib.dll` instead of selecting `BuildSpecification » SimpleDLL`
 1. Under Package fill out the following:
@@ -155,15 +155,32 @@ We are going to build this package again using the command line interface, so we
     ```
         nipkg pack "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\SimpleLibPkg" "C:\Users\<USER>\Documents\NIPM Package Tutorial\CLI Package\Package Output"
     ```
-1. You should now have a package in the "NIPM Package Tutorial\CLI Package\Package Output" directory
+1. You should now have a package in the `NIPM Package Tutorial\CLI Package\Package Output` directory
 1. Run the package and ensure that it installs correctly.
 1. Your done! Now remove it using the above [instructions](#uninstalling-the-package) so we can do it again. Jump to here if you want to install a package using the [command line interface](#Installing-a-package-using-the-command-line-interface).
 
 <h3>Build a Basic Package - NI Package Builder</h3>
+
 1. Download and install NI Package Builder from NI Package Manager.
 1. Open NI Package Builder from the start menu. I am using NI Package Builder 32-bit.
-1. Click h
-
+1. Click the New Package button in the middle of the screen.
+    ![New Package Button](/Resources/NewPackage.png)
+1. Start typing the name of your package. In this case, it is *Simple Library*. If you accidentally click off of the display name, you can right-click on the **Display name** in the *Packages* pane and select **Rename**.
+1. With the `SimpleLibrary` package selected, in the *Properties* pane click on the `Package name` field (it should say `mycompany-myproduct`) we are going to name it `simple-library`. This will name the .nipkg file that same as in our other examples. You can also fill out any other properties you would like such as the Maintainer.
+    ![Edit Properties](/Resources/EditProperties.png)
+1. Change the **Category** to `Infrastructure (hidden)`.
+1. Next we need inputs. In the *Inputs* pane click the **New Input** button and select **Add Folder**
+    ![Add Item Button](/Resources/AddItem.png)
+1. Select the folder that includes the built library: `NIPM Package Tutorial\builds\SharedLibrary\SimpleDLL`
+1. Drag the `SimpleDLL` folder from the *Inputs* pane into the `[Program Files (32-bit)]` directory.
+    ![Drag SimpleDLL into [Program Files (32-bit)](/Resources/DragFolder.png)
+1. Right-click on the `SimpleDLL` folder, select **Rename**, and rename it to `SimpleLibrary`.
+1. Save the solution. I saved it here `NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package Builder`, and called it `SimpleLibrary.pbs`. You will have to create the folder.
+1. Select **Build Solution**.
+    ![Build Solution](/Resources/BuildSolution.png)
+1. You should now have a file called `simple-package_1.0.0.0_windows_all.nipkg` in the folder `NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package Builder\Packages`
+1. Double-click the package to install it and test it out.
+1. Uninstall as usual.
 
 <h2>Installing a Package Using the Command Line Interface</h2>
 Generally you would want to do this for automating installation for a CI system or for IT deployment.
