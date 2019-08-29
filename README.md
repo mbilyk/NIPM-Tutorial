@@ -2,6 +2,7 @@
 The purpose of this tutorial is to provide basic tutorial of how to create .nipkg files. It explores a couple of the different uses of the files including creating the packages with several methods, including multiple packages in a package, creating and using feeds, and a couple of other tricks.
 
 <h2>Create a Simple Test Application</h2>
+
 We want to use a simple test application. This application will consist of three main parts:
 
 - A payload (In this case is an executable)
@@ -10,7 +11,8 @@ We want to use a simple test application. This application will consist of three
     - Third-party Software (A custom shared library (dll) that we are going to create a NIPM package to distribute)
 
 <h3>Create the Shared Library</h3>
-For detailed instructions head over to the [Create a Simple Test Application section](https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md) section. Or you can download it from the source of this example.
+
+For detailed instructions head over to the [Create Test Application section](https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md). Or you can download it from the source of this example.
 
 <h2>Create the NI Packages</h2>
 There are three main ways of creating a package
@@ -200,3 +202,5 @@ Generally you would want to do this for automating installation for a CI system 
     nipkg install --accept-eulas -y "C:\Users\<USER>\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package\simple-library_1.0.0-0_windows_all.nipkg"
     ```
 1. And that is it, it is installed. You do more complex operations that we will cover later when we want to install multiple packages at once.
+
+[Create Test Application]: https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md
