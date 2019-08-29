@@ -1,7 +1,7 @@
 <h1>Ground-up tutorial of how to create packages for use with NI Package Manager</h1>
 The purpose of this tutorial is to provide basic tutorial of how to create .nipkg files. It explores a couple of the different uses of the files including creating the packages with several methods, including multiple packages in a package, creating and using feeds, and a couple of other tricks.
 
-<h2>Create a Simple Test Application</h2>
+<h2>The Test Application</h2>
 
 We want to use a simple test application. This application will consist of three main parts:
 
@@ -9,8 +9,6 @@ We want to use a simple test application. This application will consist of three
 - Dependencies, which we will have two types:
     - NI Software (LabVIEW Run-Time Engine)
     - Third-party Software (A custom shared library (dll) that we are going to create a NIPM package to distribute)
-
-<h3>Create the Shared Library</h3>
 
 For detailed instructions head over to the [Create Test Application section](https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md). Or you can download it from the source of this example.
 
