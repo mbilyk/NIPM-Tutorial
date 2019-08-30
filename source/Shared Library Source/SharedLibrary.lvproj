@@ -11,7 +11,6 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="displayDialog.vi" Type="VI" URL="../displayDialog.vi"/>
-		<Item Name="SimpleLib.dll" Type="Document" URL="../../../../../../Program Files (x86)/SimpleLibrary/SimpleLib.dll"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="SimpleDLL" Type="DLL">
@@ -100,7 +99,7 @@
 				<Property Name="NIPKG_installerBuiltBefore" Type="Bool">false</Property>
 				<Property Name="NIPKG_installerDestination" Type="Path">../builds/NI_AB_PROJECTNAME/SimpleLibraryPackage/Package Installer</Property>
 				<Property Name="NIPKG_installerDestination.Type" Type="Str">relativeToCommon</Property>
-				<Property Name="NIPKG_lastBuiltPackage" Type="Str">simplelibrary_1.0.0-0_windows_all.nipkg</Property>
+				<Property Name="NIPKG_lastBuiltPackage" Type="Str">simple-library_1.0.0-0_windows_all.nipkg</Property>
 				<Property Name="NIPKG_license" Type="Ref"></Property>
 				<Property Name="NIPKG_releaseNotes" Type="Str"></Property>
 				<Property Name="NIPKG_storeProduct" Type="Bool">false</Property>
@@ -142,7 +141,7 @@
 				<Property Name="PKG_maintainer" Type="Str">Unregistered &lt;&gt;</Property>
 				<Property Name="PKG_output" Type="Path">../builds/NI_AB_PROJECTNAME/SimpleLibraryPackage/Package</Property>
 				<Property Name="PKG_output.Type" Type="Str">relativeToCommon</Property>
-				<Property Name="PKG_packageName" Type="Str">simplelibrary</Property>
+				<Property Name="PKG_packageName" Type="Str">simple-library</Property>
 				<Property Name="PKG_publishToSystemLink" Type="Bool">false</Property>
 				<Property Name="PKG_section" Type="Str">Infrastructure (hidden)</Property>
 				<Property Name="PKG_shortcuts.Count" Type="Int">0</Property>

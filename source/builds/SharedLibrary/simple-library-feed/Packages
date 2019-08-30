@@ -1,0 +1,34 @@
+﻿Architecture: windows_all
+Built-Using: nipkg
+CompatibilityVersion: 190006
+Description: mycompany-myproduct
+DisplayName: Simple Library
+Filename: ../SimpleLibraryFeedSource/simple-package_1.0.0.0_windows_all.nipkg
+MD5sum: fceef06bfeeed6c56d35baa6fcdc9443
+Maintainer: MyCompany <email@mycompany.com>
+Package: simple-package
+Plugin: file
+Section: Application Software
+Size: 21022
+StoreProduct: no
+UserVisible: yes
+Version: 1.0.0.0
+VisibleForRuntimeDeployment: no
+
+Architecture: windows_all
+Built-Using: nipkg
+CompatibilityVersion: 190006
+Description: mycompany-myproduct
+DisplayName: Simple Library
+Filename: ../SimpleLibraryFeedSource/simple-package_1.0.0.1_windows_all.nipkg
+MD5sum: dacb4bfc029fd3490cc8085cadc4fcbf
+Maintainer: MyCompany <email@mycompany.com>
+Package: simple-package
+Plugin: file
+Section: Application Software
+Size: 21024
+StoreProduct: no
+UserVisible: yes
+Version: 1.0.0.1
+VisibleForRuntimeDeployment: no
+
