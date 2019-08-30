@@ -1,5 +1,14 @@
 <h1>Ground-up tutorial of how to create packages for use with NI Package Manager</h1>
-The purpose of this tutorial is to provide basic tutorial of how to create .nipkg files. It explores a couple of the different uses of the files including creating the packages with several methods, including multiple packages in a package, creating and using feeds, and a couple of other tricks.
+The purpose of this tutorial is to provide basic tutorial of how to create .nipkg files. It explores a couple of the different uses of the files including creating the packages with several methods, and creating and using feeds, and a couple of other tricks.
+
+It has several sections:
+
+1. [Creating the Test Application](https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md)
+1. [Building a Simple Package](http://google.com)
+    1. [Through LabVIEW Application Builder](http://google.com)
+    1. [Through the Command Line Interface \(nipkg.exe\)](http://google.com)
+    1. [Through the NI Package Builder Application](http://google.com)
+1. [Creating a Feed](http://google.com)
 
 <h2>The Test Application</h2>
 
@@ -26,7 +35,7 @@ Lets start by creating a basic package for our dll using the LabVIEW Application
 1. Open SharedLibrary.lvproj
 1. Right-click **Build Specifications** and select **New » Package**
 1. In the properties fill out the following information:
-    1. Build Specification Name: SimpleLibraryPackage
+    1. Build Specification Name: Simple Library
     1. Package name: simple-library
     1. Destination directory: `C:\Users\<user>\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryPackage\Package`
 1. In **Destinations** create a new folder under the Program Files folder called `SimpleLibrary`
@@ -109,7 +118,7 @@ We are going to build this package again using the command line interface, so we
 
     ![New Package Button](/Resources/NewPackage.png)
 1. Start typing the name of your package. In this case, it is *Simple Library*. If you accidentally click off of the display name, you can right-click on the **Display name** in the *Packages* pane and select **Rename**.
-1. With the `SimpleLibrary` package selected, in the *Properties* pane click on the `Package name` field (it should say `mycompany-myproduct`) we are going to name it `simple-library`. This will name the .nipkg file that same as in our other examples. You can also fill out any other properties you would like such as the Maintainer.
+1. With the `Simple Library` package selected, in the *Properties* pane click on the `Package name` field (it should say `mycompany-myproduct`) we are going to name it `simple-library`. This will name the .nipkg file that same as in our other examples. You can also fill out any other properties you would like such as the Maintainer.
 
     ![Edit Properties](/Resources/EditProperties.png)
 1. Change the **Category** to `Infrastructure (hidden)`.
@@ -201,4 +210,54 @@ Generally you would want to do this for automating installation for a CI system 
     ```
 1. And that is it, it is installed. You do more complex operations that we will cover later when we want to install multiple packages at once.
 
-[Create Test Application]: https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md
+<h1>Using Feeds</h1>
+
+Create feeds to distribute multiple packages that have dependencies on one another and consolidate package file updates in one location. You can have NI Package Manager check feed locations for updates or use SystemLink to install feeds to targets.
+
+<h2>Create a feed</h2>
+
+These directions are modified from the [Creating a Feed - NI Package Manager help page](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/creating-feed/)
+
+1. Create a directory in `NIPM Package Tutorial\builds\SharedLibrary\` called `SimpleLibraryFeedSource` and place our newly minted package into the directory.
+1. Create another directory in `\NIPM Package Tutorial\builds\SharedLibrary\` called `simple-library-feed`. This is going to be the name of our feed.
+1. Open a command prompt.
+1. Change directories to the location of Package Manager. The default location is `C:\Program Files\National Instruments\NI Package Manager`.
+1. Run the following command: nipkg feed-create <target location of feed> <location of source directory>. In my case it looks like this:
+    ```
+    C:\Program Files\National Instruments\NI Package Manager> nipkg feed-create "C:\Users\nitest\Documents\NIPM Package Tutorial\builds\SharedLibrary\simple-library-feed" "C:\Users\nitest\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryFeedSource", 
+    ```
+    The `target location of feed` is going to be the directory you reference in NI Package Manager, it will contain the manifest. It will pull packages from the source directory. The feed manifest folder (in this case `simple-library-feed`) can be local to your server if you are using SystemLink server, but you would typically want to place the source directory and the feed manifest directory on a network location.
+
+<h2>Install the Feed</h2>
+
+These directions are modified from the [Installing Packages from a Feed help page](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/install-packages-from-feed/)
+
+To install packages from a feed, you register the feed and install it from the Packages tab.
+
+1. Open NI Package Manager and click the **Settings** gear.
+
+    ![Settings Gear Button](/Resources/PackageManagerSettings.png)
+1. Select the checkbox for **Show available packages and feed management tools**. Package Manager displays General and Feeds sections in the Settings dialog box.
+1. In the Feeds section, click **Add**.
+
+    ![Settings Add Feed Button](/Resources/PackageManagerAdd.png)
+1. In the Add feed dialog box, enter a name for the feed and the feed path. The feed path should be `\NIPM Package Tutorial\builds\SharedLibrary\simple-library-feed\` and the feed name will auto-populate to `simple-library-feed`
+1. Click **Add**.
+1. If you click on **Settings » Feeds** again you will see your feed at the bottom of the list.
+
+    ![Added Feed](/Resources/PackageManagerAddedFeed.png)
+1. Open the Packages tab, search for *Simple Library* and select the checkbox for the Simple Library and then click Install.
+
+<h2>Update the Package from a Feed</h2>
+
+1. Rebuild one of the packages using the above method. 
+1. Note that doing this updates the package revision. The package should now be called `simple-package_1.0.0.1_windows_all.nipkg`
+1. Copy that file into the Source Directory. In this case `NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryFeedSource`
+1. Rerun the `feed-create` cmd in the command prompt:
+    ```
+    C:\Program Files\National Instruments\NI Package Manager> nipkg feed-create "C:\Users\nitest\Documents\NIPM Package Tutorial\builds\SharedLibrary\simple-library-feed" "C:\Users\nitest\Documents\NIPM Package Tutorial\builds\SharedLibrary\SimpleLibraryFeedSource", 
+    ```
+1. Close and reopen NI Package Manager.
+1. Click on the **Updates** tab and search for *Simple Library*. There should be an update available.
+1. Check the box next to the package and install the update.
+1. Congrats!
