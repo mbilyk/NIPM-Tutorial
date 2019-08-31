@@ -4,11 +4,15 @@ The purpose of this tutorial is to provide basic tutorial of how to create .nipk
 It has several sections:
 
 1. [Creating the Test Application](https://github.com/mbilyk/NIPM-Tutorial/blob/master/Create%20Test%20Application.md)
-1. [Building a Simple Package](http://google.com)
-    1. [Through LabVIEW Application Builder](http://google.com)
-    1. [Through the Command Line Interface \(nipkg.exe\)](http://google.com)
-    1. [Through the NI Package Builder Application](http://google.com)
-1. [Creating a Feed](http://google.com)
+1. [Building a Simple Package](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#create-the-ni-packages)
+    1. [Through LabVIEW Application Builder](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#building-a-basic-package---labview-application-builder)
+    1. [Through the Command Line Interface \(nipkg.exe\)](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#build-a-basic-package---ni-package-manager-command-line-interface)
+    1. [Through the NI Package Builder](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#build-a-basic-package---ni-package-builder)
+1. [Installing a Package through the Command Line Interface \(nipkg.exe\)](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#installing-a-package-using-the-command-line-interface)
+1. [Using Feeds](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#using-feeds)
+    1. [Creating a Feed](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#create-a-feed)
+    1. [Installing a Feed](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#install-the-feed)
+    1. [Updating from a Feed](https://github.com/mbilyk/NIPM-Tutorial/blob/master/README.md#update-the-package-from-a-feed)
 
 <h2>The Test Application</h2>
 
