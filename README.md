@@ -91,9 +91,9 @@ We are going to build this package again using the command line interface, so we
     1. Note that the package has the same name as the LabVIEW Application Builder package properties. We also are setting the the rest of the attributes to be the same as in the LabVIEW Application Builder method. We set a dependency on ni-labview-2019-runtime-engine-x86. The maintainer is a required field, you will want to replace my name with your own and my email with yours.
     1. Save the file as control and omit the file extension.
 1. Inside the root directory (`SimpleLibPkg`), create a folder called data. This is going to be our main location for what we want to be contained in the package.
-1. In the data folder create a folder called `Program Files_32`
-1. In `SimpleLibPkg\data\Program Files_32` create a folder called SimpleLibrary. Notice that this is the same directory we installed our previous package to.
-1. Place our output dll into `SimpleLibPkg\data\Program Files_32\SimpleLibrary`
+1. In the data folder create a folder called `ProgramFiles_32`
+1. In `SimpleLibPkg\data\ProgramFiles_32` create a folder called SimpleLibrary. Notice that this is the same directory we installed our previous package to.
+1. Place our output dll into `SimpleLibPkg\data\ProgramFiles_32\SimpleLibrary`
 1. We are also going to skip creating an [instructions file](http://www.ni.com/documentation/en/ni-package-manager/latest/manual/instructions-xml-file-packages/) for now, since we will do it when we create a package for the executable.
 1. Inside the root directory, create a Debian binary file. This file declares conformity to the Debian standard. For more information, visit [debian.org].
     1. Using a text editor, create a new document.
